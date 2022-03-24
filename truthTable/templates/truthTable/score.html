@@ -1,0 +1,15 @@
+{% extends 'TTbase.html' %}
+
+{% block content %}
+
+<h1>You have complete this exercise, Congratulations!!!</h1>
+
+<form action="." method="POST"> {% csrf_token %}
+
+    <h2>Your score: {{ correct }} / {{ total }}</h2>
+
+    <p><input type='submit' value='Back to the generator page' name='back' class="button1"></p>
+
+</form>
+
+{% endblock %}

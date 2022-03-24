@@ -1,0 +1,60 @@
+{% extends 'TTbase.html' %}
+
+{% block content %}
+
+<h1>Exercise 1</h1>
+<form action="." method="POST"> {% csrf_token %}
+
+    <h2>Which of the following formula has the same truth table as the formula "{{ question }}"?</h2>
+    <p>A: {{ formula0 }}</p>
+    <p>B: {{ formula1 }}</p>
+    <p>C: {{ formula2 }}</p>
+    <p>D: None</p>
+
+    {% if chosen == False %}
+        <input type='submit' value='A' name='A' class="button2"/>
+        <input type='submit' value='B' name='B' class="button2"/>
+        <input type='submit' value='C' name='C' class="button2"/>
+        <input type='submit' value='D' name='D' class="button2"/>
+    {% endif %}
+
+
+    {% if feedback == True %}
+        <p>
+            Congratulations, Your answer is correct, the correct answer is:
+            {% for element in answer %}
+                {{ element }}
+            {% endfor %}
+        </p>
+    {% elif feedback == False %}
+        <p>
+            Uh oh, Your answer is incorrect, the correct answer is:
+            {% for element in answer %}
+                {{ element }}
+            {% endfor %}
+        </p>
+    {% endif %}
+
+    {% if chosen and feedback == None %}
+        <br />
+    {% endif %}
+
+    {% if nxt %}
+        <input type='submit' value='Next Question' name='next' class="button1">
+    {% endif %}
+
+<!--    <p><input type='submit' value='save' /></p>-->
+
+    <p><input type="submit" value='Home' name='home' class="button1"></p>
+
+    <p>Confused?</p>
+    <input type='submit' value='Question Formula' name='hardA' class="button1"/>
+    <input type='submit' value='Option A' name='hardB' class="button1"/>
+    <input type='submit' value='Option B' name='hardC' class="button1"/>
+    <input type='submit' value='Option C' name='hardD' class="button1"/>
+</form>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Truth Table</title>
+    <style>
+        h1 {background-color:rgb(75,175,255);
+            text-align:center;
+            padding:20px;
+            color:white;
+            clear:both;
+            margin: 10px 10px 20px 10px}
+        form {float:left;
+            background-color:white;
+            width:70%;
+            padding-left:20px;}
+        table, th, td {clear:left;
+            border:1px solid black;
+            border-collapse: collapse}
+        body {background-color:white;}
+        li {display:inline;
+            border: 1px solid black;
+            border-radius: 6px;}
+        th, td {
+        padding: 5px;}
+        .button1 {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            }
+        .button2 {
+            background-color: #e7771a;
+            border: none;
+            color: white;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            }
+        a { text-decoration: none; 
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!--this is the navigation bar of all webpages-->
+    {% if nevbar %}
+    {% include 'TTnevbar.html' %}
+    {% endif %}
+
+<!-- this is replaced by specific html -->
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

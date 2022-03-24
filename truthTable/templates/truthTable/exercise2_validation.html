@@ -1,0 +1,36 @@
+{% extends 'TTbase.html' %}
+
+{% block content %}
+
+<form action="." method="POST"> {% csrf_token %}
+
+    <h1>Validition check for Exercise 2</h1>
+
+    <h2>Oops! Some of the input formula / values are invalid!</h2>
+
+    {% for object in list %}
+        <p>
+        {% for item in object %}
+            {% if forloop.first %}
+                Object {{ item }}:
+            {% elif item == 0 %}
+                Question
+            {% elif item == 1 %}
+                Values
+            {% endif %}
+        {% endfor %}
+        <a href="http://127.0.0.1:8000/admin/truthTable/exercise2/{{ list|first|first }}/change/" target="_blank" class="button2">Link</a>
+        </p>
+    {% endfor %}
+
+
+    <p><a href="http://127.0.0.1:8000/truthTable/exercise2_validation" class="button1">Refresh</a></p>
+
+    <!-- <input type='submit' value='Refresh' name='refresh'> -->
+
+    <p><a href="http://127.0.0.1:8000/truthTable" class="button1">Home</a></p>
+
+</form>
+
+
+{% endblock %}

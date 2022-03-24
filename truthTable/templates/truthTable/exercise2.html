@@ -1,0 +1,53 @@
+{% extends 'TTbase.html' %}
+
+{% block content %}
+
+<h1>Exercise 2</h1>
+
+<form action="." method="POST"> {% csrf_token %}
+
+    <h2>For the given parameter values, what is the answer to the formula  "{{ question }}"?</h2>
+
+    <table>
+    {% for lst in table %}
+        <tr>
+            {% for element in lst %}
+            <th>{{ element }}</th>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+    <p></p>
+
+    {% if chosen == False %}
+        <input type='submit' value='0' name='0' class="button2"/>
+        <input type='submit' value='1' name='1' class="button2"/>
+    {% endif %}
+
+
+    {% if feedback == True %}
+        <p>Congratulations, Your answer is correct</p>
+    {% elif feedback == False %}
+        <p>Uh oh, Your answer is incorrect, the correct answer is: {{ answer }}</p>
+    {% endif %}
+
+    {% if chosen and feedback == None %}
+        <br />
+    {% endif %}
+
+    {% if nxt %}
+        <input type='submit' value='Next Question' name='next' class="button1">
+    {% endif %}
+
+<!--    <p><input type='submit' value='save' /></p>-->
+
+    <p><input type="submit" value='Home' name='home' class="button1"></p>
+
+    <p>Confused?</p>
+    <input type='submit' value='Question Formula' name='hard' class="button1"/>
+</form>
+
+
+
+
+{% endblock %}

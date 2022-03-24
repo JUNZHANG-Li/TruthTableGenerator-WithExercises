@@ -1,0 +1,67 @@
+{% extends 'TTbase.html' %}
+
+{% block content %}
+<style>
+    form {float:right;
+        background-color:white;
+        width:70%;}
+</style>
+<h1>Truth Table Generator</h1>
+
+<form action="." method="POST"> {% csrf_token %}
+
+    {% if empty %}
+        <p>Please fill in this column</p>
+    {% elif invalid %}
+        <p>Your formula is invalid, please try again</p>
+    {% endif%}
+
+
+    <p>Formula: <label><input type='text' name='formula' placeholder='Your Formula'></label></p>
+
+<!--    {{ form.as_p }}-->
+
+    <input type='submit' value='Calculate' name='calculate' class="button1" />
+
+    <br />
+    <br />
+    <p>Muddiest Point: </p>
+    {% for formula in hard %}
+        <input type='submit' value={{formula}} name={{forloop.counter}} class="button2">
+    {% endfor %}
+    {% if hard.length != 0 %}
+    <p><input type='submit' value='Clean' name='clean' class="button1"/></p>
+    {% endif %}
+</form>
+
+<table style="width:25%; margin-left:10px">
+    <tbody><tr>
+        <th>Boolean Operator</th>
+        <th>Key to input</th>
+    </tr>
+    <tr>
+        <td>NOT</td>
+        <td>!</td>
+    </tr>
+    <tr>
+        <td>AND</td>
+        <td>&amp;</td>
+    </tr>
+    <tr>
+        <td>OR</td>
+        <td>|</td>
+    </tr>
+    <tr>
+        <td>Impliction</td>
+        <td>&gt;</td>
+    </tr>
+    <tr>
+        <td>Bi-Implication</td>
+        <td>=</td>
+    </tr>
+    
+</tbody></table>
+
+
+
+{% endblock %}

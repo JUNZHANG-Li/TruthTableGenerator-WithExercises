@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Truth Table</title>
+    <style>
+        h1 {background-color:rgb(75,175,255);
+            text-align:center;
+            padding:20px;
+            color:white;
+            clear:both;}
+        form {float:left;
+            padding-left:20px;}
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Truth Table</h1>
+
+<div style = "position:absolute; left:30px;">
+    <h2>Your Boolean Expression: {{ formula }}</h2>
+
+    <table>
+        {% for lst in truth_table %}
+        <tr>
+
+    <!-- print out each element in the truth table-->
+            {% for element in lst %}
+            <th>{{ element }}</th>
+            {% endfor %}
+
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- this is the back button, redirect to previous page -->
+    <p><a href="../" class="button">Home</a></p>
+</div>
+
+
+</body>
+</html>
